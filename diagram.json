@@ -1,0 +1,350 @@
+{
+  "version": 1,
+  "author": "Smart School Alarm",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "board-esp32-devkit-c-v4",
+      "id": "esp32",
+      "top": 60,
+      "left": 0,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": -40,
+      "left": 230,
+      "attrs": {
+        "color": "red",
+        "label": "BELL ACTIVE"
+      }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 25,
+      "left": 160,
+      "rotate": 90,
+      "attrs": {
+        "value": "220"
+      }
+    },
+    {
+      "type": "wokwi-buzzer",
+      "id": "buzzer1",
+      "top": 130,
+      "left": 230,
+      "attrs": {
+        "volume": "0.5"
+      }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "manualButton",
+      "top": 230,
+      "left": 220,
+      "attrs": {
+        "color": "green",
+        "label": "MANUAL / STOP"
+      }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "autoButton",
+      "top": 230,
+      "left": 380,
+      "attrs": {
+        "color": "blue",
+        "label": "AUTO ON / OFF"
+      }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "pttButton",
+      "top": 340,
+      "left": 380,
+      "attrs": {
+        "color": "yellow",
+        "label": "DIRECTOR PTT",
+        "key": "p"
+      }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "emergencyButton",
+      "top": 340,
+      "left": 540,
+      "attrs": {
+        "color": "red",
+        "label": "EMERGENCY",
+        "key": "e"
+      }
+    },
+    {
+      "type": "wokwi-relay-module",
+      "id": "relay1",
+      "top": 340,
+      "left": 180,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-lcd2004",
+      "id": "lcd1",
+      "top": -160,
+      "left": -350,
+      "attrs": {
+        "pins": "i2c"
+      }
+    },
+    {
+      "type": "wokwi-ds1307",
+      "id": "rtc1",
+      "top": 230,
+      "left": -270,
+      "attrs": {
+        "datetime": "2026-07-17T07:59:55"
+      }
+    },
+    {
+      "type": "wokwi-membrane-keypad",
+      "id": "keypad1",
+      "top": -120,
+      "left": 430,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-led",
+      "id": "announcementLed",
+      "top": 450,
+      "left": 540,
+      "attrs": {
+        "color": "yellow",
+        "label": "PA ANNOUNCEMENT ACTIVE"
+      }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "announcementResistor",
+      "top": 450,
+      "left": 440,
+      "rotate": 90,
+      "attrs": {
+        "value": "220"
+      }
+    }
+  ],
+  "connections": [
+    [
+      "esp32:2",
+      "r1:1",
+      "green",
+      []
+    ],
+    [
+      "r1:2",
+      "led1:A",
+      "green",
+      []
+    ],
+    [
+      "led1:C",
+      "esp32:GND.1",
+      "black",
+      []
+    ],
+    [
+      "esp32:18",
+      "buzzer1:1",
+      "orange",
+      []
+    ],
+    [
+      "buzzer1:2",
+      "esp32:GND.1",
+      "black",
+      []
+    ],
+    [
+      "esp32:19",
+      "manualButton:1.l",
+      "blue",
+      []
+    ],
+    [
+      "manualButton:2.l",
+      "esp32:GND.1",
+      "black",
+      []
+    ],
+    [
+      "esp32:25",
+      "autoButton:1.l",
+      "cyan",
+      []
+    ],
+    [
+      "autoButton:2.l",
+      "esp32:GND.1",
+      "black",
+      []
+    ],
+    [
+      "esp32:4",
+      "pttButton:1.l",
+      "yellow",
+      []
+    ],
+    [
+      "pttButton:2.l",
+      "esp32:GND.1",
+      "black",
+      []
+    ],
+    [
+      "esp32:5",
+      "emergencyButton:1.l",
+      "red",
+      []
+    ],
+    [
+      "emergencyButton:2.l",
+      "esp32:GND.1",
+      "black",
+      []
+    ],
+    [
+      "esp32:23",
+      "relay1:IN",
+      "purple",
+      []
+    ],
+    [
+      "esp32:5V",
+      "relay1:VCC",
+      "red",
+      []
+    ],
+    [
+      "esp32:GND.1",
+      "relay1:GND",
+      "black",
+      []
+    ],
+    [
+      "esp32:21",
+      "lcd1:SDA",
+      "green",
+      []
+    ],
+    [
+      "esp32:22",
+      "lcd1:SCL",
+      "blue",
+      []
+    ],
+    [
+      "esp32:5V",
+      "lcd1:VCC",
+      "red",
+      []
+    ],
+    [
+      "esp32:GND.1",
+      "lcd1:GND",
+      "black",
+      []
+    ],
+    [
+      "esp32:21",
+      "rtc1:SDA",
+      "green",
+      []
+    ],
+    [
+      "esp32:22",
+      "rtc1:SCL",
+      "blue",
+      []
+    ],
+    [
+      "esp32:5V",
+      "rtc1:5V",
+      "red",
+      []
+    ],
+    [
+      "esp32:GND.1",
+      "rtc1:GND",
+      "black",
+      []
+    ],
+    [
+      "esp32:13",
+      "keypad1:R1",
+      "red",
+      []
+    ],
+    [
+      "esp32:14",
+      "keypad1:R2",
+      "orange",
+      []
+    ],
+    [
+      "esp32:26",
+      "keypad1:R3",
+      "yellow",
+      []
+    ],
+    [
+      "esp32:27",
+      "keypad1:R4",
+      "green",
+      []
+    ],
+    [
+      "esp32:32",
+      "keypad1:C1",
+      "blue",
+      []
+    ],
+    [
+      "esp32:33",
+      "keypad1:C2",
+      "purple",
+      []
+    ],
+    [
+      "esp32:16",
+      "keypad1:C3",
+      "cyan",
+      []
+    ],
+    [
+      "esp32:17",
+      "keypad1:C4",
+      "gray",
+      []
+    ],
+    [
+      "esp32:15",
+      "announcementResistor:1",
+      "yellow",
+      []
+    ],
+    [
+      "announcementResistor:2",
+      "announcementLed:A",
+      "yellow",
+      []
+    ],
+    [
+      "announcementLed:C",
+      "esp32:GND.1",
+      "black",
+      []
+    ]
+  ],
+  "dependencies": {}
+}
